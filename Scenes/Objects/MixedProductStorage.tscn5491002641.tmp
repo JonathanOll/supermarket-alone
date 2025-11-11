@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://doxwiqilr4owf"]
+
+[ext_resource type="Script" uid="uid://dxdfu8pn2kxqc" path="res://Scripts/mixed_product_storage.gd" id="1_dqqog"]
+[ext_resource type="Script" uid="uid://doc54jjojw8yd" path="res://Scripts/products_collision.gd" id="3_7ppc4"]
+[ext_resource type="AudioStream" uid="uid://kkyi11ilufdv" path="res://Assets/Sounds/bip.wav" id="3_dqqog"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baryh"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_baryh"]
+
+[node name="MixedProductStorage" type="CSGBox3D" node_paths=PackedStringArray("products_container", "sound")]
+material = SubResource("StandardMaterial3D_baryh")
+script = ExtResource("1_dqqog")
+products_container = NodePath("ProductsContainer")
+sound = NodePath("bip")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+
+[node name="Collision" type="CollisionShape3D" parent="Area3D" node_paths=PackedStringArray("box")]
+shape = SubResource("BoxShape3D_baryh")
+debug_color = Color(0, 0.6, 0.701961, 0.494118)
+script = ExtResource("3_7ppc4")
+box = NodePath("../..")
+
+[node name="bip" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_dqqog")
+volume_db = -30.0
+
+[node name="ProductsContainer" type="Node3D" parent="."]

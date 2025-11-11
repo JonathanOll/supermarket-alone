@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://crc2w6r6oe2fx"]
+
+[ext_resource type="PackedScene" uid="uid://cx46ay7vrj6kp" path="res://Assets/Models/Furnitures/checkout_counter.glb" id="1_y3l1q"]
+[ext_resource type="PackedScene" uid="uid://doxwiqilr4owf" path="res://Scenes/Objects/MixedProductStorage.tscn" id="2_sc7cp"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="3_rw25l"]
+[ext_resource type="Resource" uid="uid://dvqby7m3fd1mq" path="res://Products/Cereals.tres" id="4_wbs6f"]
+[ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="5_lujsa"]
+
+[node name="CheckoutCounter" type="Node3D"]
+
+[node name="checkout_counter" parent="." instance=ExtResource("1_y3l1q")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="Products" parent="." instance=ExtResource("2_sc7cp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44958, 5.36544, 0.020874)
+size = Vector3(7.30493, 3.26184, 3.01587)
+products = Array[ExtResource("3_rw25l")]([ExtResource("4_wbs6f"), ExtResource("4_wbs6f"), ExtResource("5_lujsa")])

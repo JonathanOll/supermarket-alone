@@ -1,4 +1,4 @@
-class_name Products
+class_name ProductStorage
 extends CSGBox3D
 
 @export var product: Product = null

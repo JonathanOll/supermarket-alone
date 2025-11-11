@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=16 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="PackedScene" uid="uid://kd5d27hpp8qc" path="res://Scenes/Objects/Box.tscn" id="4_7rqgy"]
 [ext_resource type="Texture2D" uid="uid://cjdifo2set12q" path="res://Assets/Materials/ground.jpg" id="4_qxria"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="5_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://cc8oft2ea6kas" path="res://Scenes/Objects/Rack.tscn" id="6_y4jh7"]
 [ext_resource type="Resource" uid="uid://dvqby7m3fd1mq" path="res://Products/Cereals.tres" id="7_q68mp"]
+[ext_resource type="PackedScene" uid="uid://crc2w6r6oe2fx" path="res://Scenes/Objects/CheckoutCounter.tscn" id="8_0iob3"]
 [ext_resource type="PackedScene" uid="uid://bxkvd1pav6i0w" path="res://Scenes/Objects/Aisle.tscn" id="8_f140w"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhkr4"]
@@ -75,3 +76,6 @@ product_count = 20
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60828, 1.99318, -13.108)
 product = ExtResource("7_q68mp")
 product_count = 20
+
+[node name="CheckoutCounter" parent="." instance=ExtResource("8_0iob3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87617, 0.00674573, 11.1567)

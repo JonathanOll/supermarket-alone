@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxkvd1pav6i0w"]
+[gd_scene load_steps=4 format=3 uid="uid://bxkvd1pav6i0w"]
 
 [ext_resource type="PackedScene" uid="uid://dgr27hj2k1mm3" path="res://Assets/Models/Furnitures/aisle.glb" id="1_7e5i7"]
 [ext_resource type="PackedScene" uid="uid://djltg67jr76w8" path="res://Scenes/Objects/ProductStorage.tscn" id="2_l3vab"]
-[ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="3_ix5ha"]
-[ext_resource type="Resource" uid="uid://dvqby7m3fd1mq" path="res://Products/Cereals.tres" id="4_dwqt1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwqt1"]
 size = Vector3(3.76563, 6.78641, 20.0878)
@@ -18,14 +16,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97277, 0)
 [node name="Products1" parent="Products" instance=ExtResource("2_l3vab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1593, 1.79873, 0.0701838)
 size = Vector3(1.20618, 2.43542, 18.4404)
-product = ExtResource("3_ix5ha")
-count = 100
+product = null
 
 [node name="Products2" parent="Products" instance=ExtResource("2_l3vab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18756, 4.47363, 0.0701838)
 size = Vector3(1.20618, 2.43542, 18.4404)
-product = ExtResource("4_dwqt1")
-count = 100
+product = null
 
 [node name="Products3" parent="Products" instance=ExtResource("2_l3vab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.28495, 1.82296, 0.0701838)
