@@ -21,3 +21,7 @@ func _ready() -> void:
 	checkout_counter.position = Vector3(7, 0, 11)
 	add_child(checkout_counter)
 	
+	var npc = NPC.create()
+	npc.position = Vector3(10, 10, -10)
+	add_child(npc)
+	

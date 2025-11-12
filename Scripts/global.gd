@@ -1,6 +1,8 @@
 extends Node
 # class_name déclaré dans le autoload
 
+var gravity := 20
+
 var PICKABLE := 1 << 1
 var STOCKAGE := 1 << 2
 
