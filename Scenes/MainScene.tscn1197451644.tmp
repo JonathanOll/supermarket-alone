@@ -26,8 +26,6 @@ ambient_light_energy = 2.5
 [sub_resource type="NavigationMesh" id="NavigationMesh_7rqgy"]
 vertices = PackedVector3Array(-59.5, 0.495, -59.5, -59.5, 0.495, 59.5, 59.5, 0.495, 59.5, 59.5, 0.495, -59.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-agent_height = 7.0
-agent_radius = 1.27
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhkr4"]
 
@@ -42,29 +40,30 @@ uv1_scale = Vector3(20, 20, 20)
 material = SubResource("StandardMaterial3D_y4jh7")
 size = Vector3(120, 0.01, 120)
 
-[node name="MainScene" type="Node3D" node_paths=PackedStringArray("navigation_region", "player")]
+[node name="MainScene" type="Node3D" node_paths=PackedStringArray("navigation_region")]
 script = ExtResource("1_0iob3")
-navigation_region = NodePath("Level")
-player = NodePath("Level/Player")
+navigation_region = NodePath("Level/NavigationRegion3D")
+
+[node name="Player" parent="." instance=ExtResource("5_qxria")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qxria")
 
-[node name="Level" type="NavigationRegion3D" parent="."]
+[node name="Level" type="Node3D" parent="."]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Level"]
 navigation_mesh = SubResource("NavigationMesh_7rqgy")
 
-[node name="Ground" type="StaticBody3D" parent="Level"]
+[node name="Ground" type="StaticBody3D" parent="Level/NavigationRegion3D"]
 physics_material_override = SubResource("PhysicsMaterial_nhkr4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ground"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/NavigationRegion3D/Ground"]
 shape = SubResource("BoxShape3D_nhkr4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Ground/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/NavigationRegion3D/Ground/CollisionShape3D"]
 mesh = SubResource("BoxMesh_nhkr4")
 skeleton = NodePath("../..")
-
-[node name="Player" parent="Level" instance=ExtResource("5_qxria")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 
 [node name="ProceduralGeneration" type="Node" parent="."]
 script = ExtResource("4_7rqgy")
