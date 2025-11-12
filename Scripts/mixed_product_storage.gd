@@ -44,3 +44,6 @@ func add_item(p: Product):
 	products.push_back(p)
 	products_container.add_child(p.create())
 	refresh()
+	
+func hasProducts() -> bool:
+	return !products.is_empty()

@@ -1,11 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=13 format=3 uid="uid://bisacees2rd6b"]
 
-[ext_resource type="PackedScene" uid="uid://kd5d27hpp8qc" path="res://Scenes/Objects/Box.tscn" id="4_7rqgy"]
+[ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/main.gd" id="1_0iob3"]
 [ext_resource type="Texture2D" uid="uid://cjdifo2set12q" path="res://Assets/Materials/ground.jpg" id="4_qxria"]
 [ext_resource type="PackedScene" uid="uid://djxia0exild6r" path="res://Scenes/Entities/Player.tscn" id="5_qxria"]
-[ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="5_y4jh7"]
-[ext_resource type="PackedScene" uid="uid://cc8oft2ea6kas" path="res://Scenes/Objects/Rack.tscn" id="6_y4jh7"]
-[ext_resource type="Resource" uid="uid://dvqby7m3fd1mq" path="res://Products/Cereals.tres" id="7_q68mp"]
 [ext_resource type="PackedScene" uid="uid://crc2w6r6oe2fx" path="res://Scenes/Objects/CheckoutCounter.tscn" id="8_0iob3"]
 [ext_resource type="PackedScene" uid="uid://bxkvd1pav6i0w" path="res://Scenes/Objects/Aisle.tscn" id="8_f140w"]
 
@@ -41,6 +38,7 @@ ambient_light_color = Color(1, 0.647059, 0.243137, 1)
 ambient_light_energy = 2.5
 
 [node name="MainScene" type="Node3D"]
+script = ExtResource("1_0iob3")
 
 [node name="Player" parent="." instance=ExtResource("5_qxria")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
@@ -63,19 +61,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.565, 3.077, -28.818)
 
 [node name="Aisle" parent="." instance=ExtResource("8_f140w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84176, 0.00500011, -5.4029)
-
-[node name="Rack" parent="." instance=ExtResource("6_y4jh7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.91927, 0.0189539, -21.9142)
-
-[node name="Box" parent="." instance=ExtResource("4_7rqgy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60828, 0.00500016, -13.108)
-product = ExtResource("5_y4jh7")
-product_count = 20
-
-[node name="Box2" parent="." instance=ExtResource("4_7rqgy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60828, 1.99318, -13.108)
-product = ExtResource("7_q68mp")
-product_count = 20
 
 [node name="CheckoutCounter" parent="." instance=ExtResource("8_0iob3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.87617, 0.00674573, 11.1567)

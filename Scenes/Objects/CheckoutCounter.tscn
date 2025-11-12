@@ -8,9 +8,9 @@
 [ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="5_lujsa"]
 [ext_resource type="AudioStream" uid="uid://kkyi11ilufdv" path="res://Assets/Sounds/bip.wav" id="7_lujsa"]
 
-[node name="CheckoutCounter" type="Node3D" node_paths=PackedStringArray("products", "sound", "price_label")]
+[node name="CheckoutCounter" type="Node3D" node_paths=PackedStringArray("productContainer", "sound", "price_label")]
 script = ExtResource("1_tv5kb")
-products = NodePath("Products")
+productContainer = NodePath("Products")
 sound = NodePath("bip")
 price_label = NodePath("Label3D")
 

@@ -39,7 +39,7 @@ func _on_clicked(player: Player, mouseButton: int) -> void:
 		return
 	
 	if mouseButton == MOUSE_BUTTON_LEFT:	
-		if !product:
+		if !product || count == 0:
 			set_product(player.in_hands.product)
 		elif player.in_hands.product.name != product.name || player.in_hands.product_count <= 0:
 			return

@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc8oft2ea6kas"]
+[gd_scene load_steps=4 format=3 uid="uid://cc8oft2ea6kas"]
 
 [ext_resource type="PackedScene" uid="uid://cvx106ixfngn0" path="res://Assets/Models/Furnitures/rack.glb" id="1_6xbog"]
+[ext_resource type="Script" uid="uid://crrcjpefadliq" path="res://Scripts/rack.gd" id="1_o86g2"]
 [ext_resource type="PackedScene" uid="uid://brqqbgm4jdpw1" path="res://Scenes/Objects/BoxStorage.tscn" id="2_5mguh"]
 
-[node name="Rack" type="Node3D"]
+[node name="Rack" type="Node3D" node_paths=PackedStringArray("box_storages")]
+script = ExtResource("1_o86g2")
+box_storages = [NodePath("BoxStorage1"), NodePath("BoxStorage2"), NodePath("BoxStorage3"), NodePath("BoxStorage4"), NodePath("BoxStorage5"), NodePath("BoxStorage6"), NodePath("BoxStorage7"), NodePath("BoxStorage8"), NodePath("BoxStorage9"), NodePath("BoxStorage10"), NodePath("BoxStorage11"), NodePath("BoxStorage12")]
 
 [node name="rack" parent="." instance=ExtResource("1_6xbog")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

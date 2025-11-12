@@ -9,6 +9,8 @@ class_name Box
 @export var model: Node3D
 @export var product_count: int
 
+static var scene: PackedScene = preload("res://Scenes/Objects/Box.tscn")
+
 func _ready() -> void:
 	if !product: return
 	
@@ -41,4 +43,8 @@ func toggle(value: bool) -> void:
 	if !value:
 		model.position = Vector3.ZERO
 		
-		
+static func create(product: Product) -> Box:
+	var instance: Box = scene.instantiate()
+	instance.product = product
+	instance.product_count = product.unit_per_box
+	return instance

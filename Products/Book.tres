@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Product" load_steps=3 format=3 uid="uid://bgne8m543xqx1"]
+
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="1_2wvca"]
+[ext_resource type="PackedScene" uid="uid://ddy37xj1k0pl4" path="res://Assets/Models/Groceries/book.glb" id="1_lobl7"]
+
+[resource]
+script = ExtResource("1_2wvca")
+name = "Wallace & Gromit"
+unit_price = 8.0
+unit_per_box = 60
+model = ExtResource("1_lobl7")
+rotation = Vector3(0, 0, 0)
+translate = Vector3(0, 0, 0)
+gap = 0.05
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Product" load_steps=3 format=3 uid="uid://c7idfdkiuc6a4"]
 
-[ext_resource type="PackedScene" uid="uid://inla5megi4yf" path="res://Assets/Models/Groceries/Electronics/flashlight.glb" id="1_clccc"]
+[ext_resource type="PackedScene" uid="uid://inla5megi4yf" path="res://Assets/Models/Groceries/flashlight.glb" id="1_clccc"]
 [ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="2_ncaxo"]
 
 [resource]

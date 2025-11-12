@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dqwlokxcyfr7t"
-path="res://.godot/imported/Cereal.glb-22408d94d728ab74abcd67467464d697.scn"
+uid="uid://inla5megi4yf"
+path="res://.godot/imported/flashlight.glb-f651481e928bfe53c987d837e09e931e.scn"
 
 [deps]
 
-source_file="res://Models/Groceries/Cereals/Cereal.glb"
-dest_files=["res://.godot/imported/Cereal.glb-22408d94d728ab74abcd67467464d697.scn"]
+source_file="res://Assets/Models/Groceries/flashlight.glb"
+dest_files=["res://.godot/imported/flashlight.glb-f651481e928bfe53c987d837e09e931e.scn"]
 
 [params]
 

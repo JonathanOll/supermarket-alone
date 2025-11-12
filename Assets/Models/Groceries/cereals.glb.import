@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cdmsys1borril"
-path="res://.godot/imported/cereals.glb-b354c989cdecc0af0be71636fe77cadb.scn"
+path="res://.godot/imported/cereals.glb-dcd5f8392aca472cfbdd0d28110b6a2f.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Groceries/Cereals/cereals.glb"
-dest_files=["res://.godot/imported/cereals.glb-b354c989cdecc0af0be71636fe77cadb.scn"]
+source_file="res://Assets/Models/Groceries/cereals.glb"
+dest_files=["res://.godot/imported/cereals.glb-dcd5f8392aca472cfbdd0d28110b6a2f.scn"]
 
 [params]
 
