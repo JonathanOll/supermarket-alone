@@ -61,8 +61,6 @@ func next_task():
 		next_task()
 
 
-
-
 static func create() -> NPC:
 	return scene.instantiate()
 
