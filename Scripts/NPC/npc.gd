@@ -18,6 +18,7 @@ func _ready() -> void:
 		tasks.append(GotoTask.new(storage.front.global_position))
 		tasks.append(TakeTask.new(storage, randi_range(0, min(5, storage.count))))
 	next_task()
+	# TODO: le faire aller à la caisse pour attendre
 
 func _physics_process(delta: float) -> void:
 	velocity.x = 0
