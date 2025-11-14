@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=16 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djxia0exild6r" path="res://Scenes/Entities/Player.tscn" id="3_7lihs"]
 [ext_resource type="PackedScene" uid="uid://bquooy66p2kgr" path="res://UI/MoneyCount.tscn" id="5_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://drcy2gkasnll5" path="res://UI/BoxContent.tscn" id="6_7lihs"]
+[ext_resource type="PackedScene" uid="uid://c0xb2wcee3fm2" path="res://UI/Shop/Shop.tscn" id="7_fgofq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
 sky_top_color = Color(0.384314, 0.756863, 0.898039, 1)
@@ -44,11 +45,12 @@ uv1_scale = Vector3(20, 20, 20)
 material = SubResource("StandardMaterial3D_y4jh7")
 size = Vector3(120, 0.01, 120)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("navigation_region", "player", "level")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("navigation_region", "player", "level", "shop")]
 script = ExtResource("1_kldst")
 navigation_region = NodePath("Level")
 player = NodePath("Level/Player")
 level = NodePath("Level")
+shop = NodePath("CanvasLayer/Shop")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qxria")
@@ -76,3 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 
 [node name="BoxContent" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_7lihs")]
 player = NodePath("../../Level/Player")
+
+[node name="Shop" parent="CanvasLayer" instance=ExtResource("7_fgofq")]
+visible = false
+anchors_preset = 15

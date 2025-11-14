@@ -6,6 +6,7 @@ static var instance: Game
 @export var navigation_region: NavigationRegion3D
 @export var player: Player
 @export var level: Level
+@export var shop: Shop
 
 var money: float = 1_000
 
@@ -15,7 +16,7 @@ func _ready() -> void:
 	level.init()
 
 func _process(delta):
-	if Input.is_action_pressed("dev"):
-		pass
+	if Input.is_action_just_pressed("dev"):
+		shop.visible = !shop.visible
 
 	
