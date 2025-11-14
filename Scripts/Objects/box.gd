@@ -44,7 +44,8 @@ func toggle(value: bool) -> void:
 		model.position = Vector3.ZERO
 
 func _on_clicked(player: Player, mouseButton: int) -> void:
-	pass # TODO
+	if player.in_hands == null:
+		player.get_in_hand(self)
 
 
 

@@ -1,7 +1,21 @@
-extends CharacterBody3D 
+extends ClickableCharacter
 class_name NPC
 
 static var scene: PackedScene = preload("res://Scenes/Entities/NPC.tscn")
+
+var slurs = [
+	"Ton cerveau doit avoir le mode avion activé.",
+	"T’es le genre à perdre contre un tutoriel.",
+	"Je suis sûr que tu révises avec des coloriages.",
+	"Ton Wi-Fi est plus stable que tes arguments.",
+	"T’as la logique d’un grille-pain en grève.",
+	"On dirait que tu fais des calculs avec des cailloux.",
+	"Ton charisme est en mode économie d’énergie.",
+	"Même Google ne veut pas te répondre.",
+	"T’as la répartie d’un poisson rouge en réunion.",
+	"On dirait que tu sauvegardes tes idées sur une disquette."
+]
+
 
 var animations = {
 	walk = {
@@ -15,6 +29,10 @@ var animations = {
 	idle = {
 		res = "CharacterArmature|Idle",
 		loop = true
+	},
+	hit = {
+		res = "CharacterArmature|HitRecieve_2",
+		loop = false
 	}
 }
 
@@ -67,6 +85,9 @@ func animate(animation):
 	animation_player.play(animation.res)
 
 func handle_tasks():
+	if !cooldown.is_stopped():
+		return
+		
 	if current_task:
 		current_task.loop()
 		if current_task.finished() && !tasks.is_empty():
@@ -78,10 +99,21 @@ func complain(text: String, duration: float = 5.0):
 	complaint_label.text = text
 	complaint_timer.start(duration)	
 
+func receive_hit():
+	animate(animations.hit)
+	velocity.x = 0
+	velocity.z = 0
+	cooldown.start(2)
+	complain(slurs.pick_random())
+
 func _on_complaint_timer_timeout() -> void:
 	complaint_label.text = ""
 
-
+func _on_clicked(player: Player, mouseButton: int) -> void:
+	receive_hit()
+	var look_at_pos = player.global_position
+	look_at_pos.y = 0
+	look_at(look_at_pos)
 
 
 static func create() -> NPC:

@@ -8,15 +8,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ohx7e"]
 size = Vector3(2.46973, 1.28714, 1.83398)
 
-[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("img_generator", "viewport", "image_container", "collider", "model")]
-collision_layer = 4
+[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("img_generator", "viewport", "image_container", "model")]
+collision_layer = 6
 collision_mask = 3
 mass = 0.001
 script = ExtResource("1_rueyf")
 img_generator = NodePath("SubViewport/ImgGenerator")
 viewport = NodePath("SubViewport")
 image_container = NodePath("Model/ImageContainer")
-collider = NodePath("")
 model = NodePath("Model")
 metadata/_custom_type_script = "uid://b4koncaet8puk"
 

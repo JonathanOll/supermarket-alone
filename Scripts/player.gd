@@ -63,15 +63,7 @@ func handle_click(event):
 		if event.pressed:
 			var hit = _shoot_raycast()
 			if hit:
-				print(hit)
 				hit.collider.clicked.emit(self, event.button_index)
-				#if Global.is_on_layer(hit.collider, Global.PICKABLE) && !in_hands:
-					#get_in_hand(hit.collider)
-				#elif Global.is_on_layer(hit.collider, Global.STOCKAGE):
-					#hit.collider.get_parent().clicked.emit(self, )
-				#else:
-					#if in_hands:
-						#clear_hand()
 			else:
 				if in_hands:
 					clear_hand()

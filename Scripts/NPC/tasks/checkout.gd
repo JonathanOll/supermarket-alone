@@ -15,9 +15,6 @@ func finished():
 	return false
 
 func loop():
-	if !npc.cooldown.is_stopped():
-		return
-	
 	if !npc.agent.is_target_reached():
 		pathfind()
 		return
@@ -42,8 +39,6 @@ func pathfind():
 		npc.animate(npc.animations.walk)
 
 func put_item():
-	if !npc.cooldown.is_stopped():
-		return
 	npc.animate(npc.animations.interact)
 	var product = npc.products.pop_front()
 	checkout_counter.add_item(product)

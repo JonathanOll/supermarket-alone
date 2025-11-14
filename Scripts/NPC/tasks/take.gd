@@ -13,9 +13,6 @@ func finished():
 	return count == 0
 
 func loop():
-	if !npc.cooldown.is_stopped():
-		return
-	
 	if count > 0:
 		if product_storage.count == 0:
 			npc.complain("Plus de " + product_storage.product.name + " en stock !")

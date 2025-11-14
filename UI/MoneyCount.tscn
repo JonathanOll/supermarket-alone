@@ -10,6 +10,7 @@ script = ExtResource("1_e73ny")
 label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 5.0
 offset_top = -5.0
 offset_right = 255.0

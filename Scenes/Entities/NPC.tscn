@@ -8,44 +8,40 @@ radius = 1.26947
 height = 7.66614
 
 [node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("cooldown", "agent", "animation_player", "complaint_label", "complaint_timer")]
-collision_layer = 2
+collision_layer = 6
 script = ExtResource("1_p23k1")
 cooldown = NodePath("Cooldown")
 agent = NodePath("NavigationAgent3D")
 animation_player = NodePath("Model/AnimationPlayer")
 complaint_label = NodePath("Complaint")
 complaint_timer = NodePath("Complaint/ComplaintTimer")
+metadata/_custom_type_script = "uid://v4e8crodch6w"
 
 [node name="Model" parent="." instance=ExtResource("1_3twlq")]
 transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/RootNode/CharacterArmature" index="0"]
-bones/5/rotation = Quaternion(-0.00020698, 8.00355e-11, 1.16415e-10, 1)
+bones/1/position = Vector3(4.53208e-06, 0.00934786, -3.20814e-05)
+bones/1/rotation = Quaternion(-0.0270281, 0.235439, -0.00655022, 0.971491)
+bones/4/rotation = Quaternion(0.153868, -0.237706, -0.00529316, 0.959058)
 bones/6/rotation = Quaternion(-0.00947105, 8.00391e-11, -1.89183e-10, 0.999955)
-bones/7/rotation = Quaternion(-0.0245108, -2.58977e-10, 0.000127055, 0.9997)
-bones/10/rotation = Quaternion(-0.741918, -0.0413935, -0.176409, 0.645542)
+bones/7/rotation = Quaternion(0.00267473, 2.09032e-06, -1.38647e-05, 0.999996)
+bones/10/rotation = Quaternion(-0.741918, -0.0413934, -0.176409, 0.645542)
 bones/11/rotation = Quaternion(-0.11985, -0.0209594, -0.19429, 0.973369)
-bones/14/rotation = Quaternion(-0.00440121, 0.145898, 0.0930834, 0.984901)
-bones/15/rotation = Quaternion(-0.0822602, -0.00279774, 0.0209049, 0.996388)
-bones/19/rotation = Quaternion(-0.0535813, 0.0588507, -0.000211707, 0.996828)
-bones/20/rotation = Quaternion(-0.120008, -0.00437157, -0.0210206, 0.992541)
-bones/24/rotation = Quaternion(-0.0439309, 0.106429, -0.0408442, 0.992509)
 bones/25/rotation = Quaternion(-0.119294, 0.0572576, -0.0398883, 0.990404)
 bones/26/rotation = Quaternion(-0.0748089, 0.0279542, -0.00762858, 0.996777)
 bones/31/rotation = Quaternion(-0.116958, -0.00965458, -0.00323035, 0.993085)
 bones/34/rotation = Quaternion(0.131836, 0.274653, -0.0108175, 0.952401)
-bones/35/rotation = Quaternion(-0.0596972, 0.0318687, 0.117547, 0.990759)
-bones/38/rotation = Quaternion(-0.741143, 0.171119, 0.108826, 0.639986)
+bones/38/rotation = Quaternion(-0.741143, 0.171119, 0.108826, 0.639987)
 bones/39/rotation = Quaternion(-0.203003, -0.203246, 0.331849, 0.898531)
 bones/53/rotation = Quaternion(-0.119295, -0.0572576, 0.0398883, 0.990404)
 bones/56/rotation = Quaternion(-0.0310906, 0.0273529, -0.227078, 0.972996)
 bones/61/rotation = Quaternion(-0.254289, 0.351549, 0.248254, 0.866095)
 bones/62/rotation = Quaternion(0.131836, -0.274653, 0.0108175, 0.952401)
-bones/63/rotation = Quaternion(-0.0596973, -0.0318687, -0.117547, 0.990759)
-bones/65/rotation = Quaternion(0.96787, 0.0771803, -0.222048, 0.0892494)
-bones/66/rotation = Quaternion(0.247458, -2.35498e-08, 3.68612e-16, 0.968899)
-bones/68/rotation = Quaternion(0.965092, -0.0183966, 0.171005, 0.197524)
-bones/69/rotation = Quaternion(0.222987, 7.46389e-09, 7.64302e-09, 0.974821)
+bones/65/rotation = Quaternion(0.967948, 0.09701, -0.216961, 0.0812054)
+bones/66/rotation = Quaternion(0.270776, -2.27354e-08, 2.9024e-09, 0.962642)
+bones/68/rotation = Quaternion(0.9693, -0.0110234, 0.173056, 0.174321)
+bones/69/rotation = Quaternion(0.225896, -1.07555e-09, -4.18265e-09, 0.974151)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.38336, 0)
@@ -67,6 +63,7 @@ vertical_alignment = 2
 [node name="ComplaintTimer" type="Timer" parent="Complaint"]
 one_shot = true
 
+[connection signal="clicked" from="." to="." method="_on_clicked"]
 [connection signal="timeout" from="Complaint/ComplaintTimer" to="." method="_on_complaint_timer_timeout"]
 
 [editable path="Model"]
