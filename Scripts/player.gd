@@ -57,9 +57,9 @@ func _physics_process(delta):
 
 func handle_click(event):
 	if (event is InputEventScreenTouch || event is InputEventMouseButton) && event.pressed:
-		var hit = _shoot_raycast(Global.CLICKABLE)
+		var hit = _shoot_raycast(Global.CLICKABLE, event.position)
 		if hit:
-			hit.collider.clicked.emit(self, event.button_index)
+			hit.collider.clicked.emit(self, event.button_index if event is InputEventMouseButton else MOUSE_BUTTON_LEFT)
 
 func get_in_hand(item) -> void:
 	item.pick(hands)
@@ -71,12 +71,13 @@ func clear_hand():
 	in_hands = null
 
 
-func _shoot_raycast(mask: int):
+func _shoot_raycast(mask: int, screen_position: Vector2 = Vector2(-1000,-1000)):
 	var space_state = get_world_3d().direct_space_state
-	var mousePos = get_viewport().get_mouse_position()
+	if screen_position.x == screen_position.y and screen_position.x == - 1000:
+		screen_position = get_viewport().size / 2
 	
-	var from = camera.project_ray_origin(mousePos)
-	var to = from + camera.project_ray_normal(mousePos) * REACH
+	var from = camera.project_ray_origin(screen_position)
+	var to = from + camera.project_ray_normal(screen_position) * REACH
 	var rayCaster = PhysicsRayQueryParameters3D.create(from, to)
 	rayCaster.collide_with_areas = true
 	rayCaster.collision_mask = mask
