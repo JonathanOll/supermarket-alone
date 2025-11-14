@@ -2,16 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bnnu28hbgfge5" path="res://Scripts/Objects/box_storage.gd" id="1_ug8ci"]
 [ext_resource type="Script" uid="uid://dfmuuy21nqtsb" path="res://Scripts/Interfaces/extended_area.gd" id="2_snkul"]
+[ext_resource type="Material" uid="uid://c0gln70w5li2n" path="res://Assets/Materials/hovered.tres" id="3_um6wt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_13f64"]
 size = Vector3(2.45508, 1.28577, 1.83008)
 
 [sub_resource type="BoxMesh" id="BoxMesh_snkul"]
 size = Vector3(2.45508, 1.28577, 1.83008)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um6wt"]
-transparency = 1
-albedo_color = Color(0.407843, 0.847059, 0.854902, 0.501961)
 
 [node name="BoxStorage" type="Node3D" node_paths=PackedStringArray("front", "mesh_instance")]
 script = ExtResource("1_ug8ci")
@@ -31,7 +28,7 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Box/Collision"]
 visible = false
 mesh = SubResource("BoxMesh_snkul")
-surface_material_override/0 = SubResource("StandardMaterial3D_um6wt")
+surface_material_override/0 = ExtResource("3_um6wt")
 
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.29311)
