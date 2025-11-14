@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://kd5d27hpp8qc"]
+[gd_scene load_steps=5 format=3 uid="uid://kd5d27hpp8qc"]
 
 [ext_resource type="PackedScene" uid="uid://cb0ut7n0reaop" path="res://Assets/Models/Misc/box.glb" id="1_g0g3h"]
 [ext_resource type="Script" uid="uid://by7lddgiq35s3" path="res://Scripts/Objects/box.gd" id="1_rueyf"]
-[ext_resource type="Script" uid="uid://8xbjymqd5p2f" path="res://Scripts/Interfaces/clickable.gd" id="3_qm080"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohx7e"]
 
@@ -19,6 +18,7 @@ viewport = NodePath("SubViewport")
 image_container = NodePath("Model/ImageContainer")
 collider = NodePath("")
 model = NodePath("Model")
+metadata/_custom_type_script = "uid://b4koncaet8puk"
 
 [node name="Model" parent="." instance=ExtResource("1_g0g3h")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
@@ -49,8 +49,6 @@ autostart = true
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00134277, 0.638748, 0.00674438)
 shape = SubResource("BoxShape3D_ohx7e")
-script = ExtResource("3_qm080")
-metadata/_custom_type_script = "uid://8xbjymqd5p2f"
 
+[connection signal="clicked" from="." to="." method="_on_clicked"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="clicked" from="Collider" to="." method="_on_collider_clicked"]

@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends ClickableBody
 class_name Box
 
 @export var product: Product
@@ -42,15 +42,16 @@ func toggle(value: bool) -> void:
 	visible = value
 	if !value:
 		model.position = Vector3.ZERO
-		
+
+func _on_clicked(player: Player, mouseButton: int) -> void:
+	pass # TODO
+
+
+
+
+
 static func create(product: Product) -> Box:
 	var instance: Box = scene.instantiate()
 	instance.product = product
 	instance.product_count = product.unit_per_box
 	return instance
-
-
-
-
-func _on_collider_clicked(player: Player, mouseButton: int) -> void:
-	pass # TODO
