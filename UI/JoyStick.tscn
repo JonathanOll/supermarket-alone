@@ -6,9 +6,11 @@
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_0qwoh")]
 offset_left = 3.0
-offset_top = 345.0
-offset_right = 303.0
+offset_top = 8.0
+offset_right = 456.0
 offset_bottom = 645.0
+joystick_mode = 1
+visibility_mode = 2
 action_left = "left"
 action_right = "right"
 action_up = "forward"

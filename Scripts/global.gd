@@ -12,8 +12,9 @@ var HOVERABLE := 1 << 4
 var products: Array[Product] = []
 
 func _ready() -> void:
-	for file in DirAccess.open("res://Products/").get_files():
-		products.push_back(load("res://Products/" + file))
+	
+	for file in ResourceLoader.list_directory("res://Products/"):
+		products.push_back(ResourceLoader.load("res://Products/" + file))
 
 
 func is_on_layer(node: Node3D, layer_mask: int) -> bool:

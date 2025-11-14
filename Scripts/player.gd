@@ -56,7 +56,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func handle_click(event):
-	if event is InputEventMouseButton && event.pressed:
+	if (event is InputEventScreenTouch || event is InputEventMouseButton) && event.pressed:
 		var hit = _shoot_raycast(Global.CLICKABLE)
 		if hit:
 			hit.collider.clicked.emit(self, event.button_index)
