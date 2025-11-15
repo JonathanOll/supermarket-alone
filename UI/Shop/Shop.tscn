@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk1np2idhb67f"]
+[gd_scene load_steps=4 format=3 uid="uid://dk1np2idhb67f"]
 
 [ext_resource type="Script" uid="uid://cvur2u565n883" path="res://Scripts/UI/shop.gd" id="1_7ehp3"]
 
@@ -9,19 +9,13 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ehp3"]
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwpk6"]
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Shop" type="Control"]
+[node name="Shop" type="Control" node_paths=PackedStringArray("product_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7ehp3")
+product_container = NodePath("MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/ProductContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -106,104 +101,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer"]
+[node name="ProductContainer" type="FlowContainer" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
-columns = 2
-
-[node name="Panel" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ehp3")
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.8
-alignment_horizontal = 0
-alignment_vertical = 0
-
-[node name="Panel" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel/MarginContainer/HBoxContainer/AspectRatioContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 6.0
-
-[node name="Name" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "NAME"
-horizontal_alignment = 1
-
-[node name="Quantity" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "Quantity: 15"
-horizontal_alignment = 1
-
-[node name="Price" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.666667, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
-text = "65$"
-horizontal_alignment = 1
-
-[node name="Panel2" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ehp3")
-
-[node name="Panel3" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ehp3")
-
-[node name="Panel4" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ehp3")
-
-[node name="Panel5" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ehp3")
-
-[node name="Panel6" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ehp3")
-
-[node name="Panel7" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/GridContainer"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_7ehp3")
 
 [node name="Cart" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/HBoxContainer2"]
 layout_mode = 2

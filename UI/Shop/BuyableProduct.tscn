@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://wqmdqctye581"]
+[gd_scene load_steps=3 format=3 uid="uid://wqmdqctye581"]
+
+[ext_resource type="Script" uid="uid://l8213utqq8er" path="res://Scripts/ui/buyable_product.gd" id="1_725vo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klg30"]
 corner_radius_top_left = 10
@@ -6,16 +8,22 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="BuyableProduct" type="Control"]
+[node name="BuyableProduct" type="Control" node_paths=PackedStringArray("image", "name_label", "quantity_label", "price_label")]
+custom_minimum_size = Vector2(375, 150)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_725vo")
+image = NodePath("Panel/MarginContainer/HBoxContainer/AspectRatioContainer/Image")
+name_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/Name")
+quantity_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/Quantity")
+price_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/Price")
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 1
 offset_right = 370.0
 offset_bottom = 150.0
@@ -44,7 +52,7 @@ size_flags_stretch_ratio = 3.8
 alignment_horizontal = 0
 alignment_vertical = 0
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/HBoxContainer/AspectRatioContainer"]
+[node name="Image" type="Panel" parent="Panel/MarginContainer/HBoxContainer/AspectRatioContainer"]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]

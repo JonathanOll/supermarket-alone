@@ -76,7 +76,6 @@ func create_image(scene: SceneTree):
 	image_texture = ImageTexture.create_from_image(img)
 	
 	subviewport.queue_free()
-	print(image_texture)
 
 
 func create():
