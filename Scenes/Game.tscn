@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=23 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://dk1np2idhb67f" path="res://UI/Shop/Shop.tscn" id="7_fgofq"]
 [ext_resource type="PackedScene" uid="uid://dqcqdjq48mup6" path="res://UI/JoyStick.tscn" id="8_2irst"]
 [ext_resource type="PackedScene" uid="uid://cyyj6fe42fyhj" path="res://Scenes/Objects/Fridge.tscn" id="9_bf53h"]
+[ext_resource type="PackedScene" uid="uid://bpv6asc6eh4h1" path="res://Assets/Models/Terrain/Road.glb" id="10_71axn"]
+[ext_resource type="PackedScene" uid="uid://dweskrghuuqbi" path="res://Assets/Models/Terrain/Building1.glb" id="11_dahhg"]
+[ext_resource type="PackedScene" uid="uid://cw65yrj0q1k5t" path="res://Assets/Models/Terrain/Eiffel.glb" id="12_3so38"]
+[ext_resource type="PackedScene" uid="uid://imp25nwtl24w" path="res://Assets/Models/Terrain/Building2.glb" id="13_3cx6b"]
+[ext_resource type="PackedScene" uid="uid://vaskgsoadtg3" path="res://Assets/Models/Terrain/Building3.glb" id="14_wxwew"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
 sky_top_color = Color(0.384314, 0.756863, 0.898039, 1)
@@ -77,6 +82,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 [node name="BoxSpawnPoint" type="Node3D" parent="Level"]
 transform = Transform3D(0.999681, 0, -0.0252697, 0, 1, 0, 0.0252697, 0, 0.999681, 41.6396, 9.54946, 0)
 
+[node name="Terrain" type="Node3D" parent="Level"]
+
+[node name="Road" parent="Level/Terrain" instance=ExtResource("10_71axn")]
+transform = Transform3D(1000, 0, 0, 0, 100, 0, 0, 0, 150, 0, -1.00322, -113.708)
+
+[node name="group524283309" parent="Level/Terrain/Road" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 2)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MoneyCount" parent="CanvasLayer" instance=ExtResource("5_b2bpf")]
@@ -97,4 +110,18 @@ autostart = true
 [node name="Fridge" parent="." instance=ExtResource("9_bf53h")]
 transform = Transform3D(-0.937653, 0, -0.347574, 0, 1, 0, 0.347574, 0, -0.937653, 33.5826, 0.620359, 25.7097)
 
+[node name="Building1" parent="." instance=ExtResource("11_dahhg")]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 141.594, 1.13345, -209.982)
+
+[node name="Eiffel" parent="." instance=ExtResource("12_3so38")]
+transform = Transform3D(0.05, 0, 0, 0, 0.0499455, 0.00233353, 0, -0.00233353, 0.0499455, -300, 0, -1257.98)
+
+[node name="Building2" parent="." instance=ExtResource("13_3cx6b")]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 9.87241, 1.06005, -216.155)
+
+[node name="Building3" parent="." instance=ExtResource("14_wxwew")]
+transform = Transform3D(-100, 0, -1.50996e-05, 0, 100, 0, 1.50996e-05, 0, -100, -154.974, -1.52588e-05, -221.166)
+
 [connection signal="timeout" from="NPCSpawn" to="." method="_on_npc_spawn_timeout"]
+
+[editable path="Level/Terrain/Road"]

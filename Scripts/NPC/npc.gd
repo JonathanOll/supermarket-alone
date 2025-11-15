@@ -41,6 +41,7 @@ var animations = {
 @export var complaint_label: Label3D
 @export var complaint_timer: Timer
 @export var models: Array[PackedScene] = []
+@export var punch: AudioStreamPlayer3D
 
 var products: Array[Product] = []
 var tasks: Array[Task] = []
@@ -118,6 +119,7 @@ func receive_hit():
 	velocity.z = 0
 	cooldown.start(2)
 	complain(slurs.pick_random())
+	punch.play()
 
 func _on_complaint_timer_timeout() -> void:
 	complaint_label.text = ""
