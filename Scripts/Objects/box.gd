@@ -14,16 +14,8 @@ static var scene: PackedScene = preload("res://Scenes/Objects/Box.tscn")
 func _ready() -> void:
 	if !product: return
 	
-	product.load()
-	img_generator.add_child(product.create())
-
-func _on_timer_timeout() -> void:
-	if !product: return
-	
-	var img = viewport.get_viewport().get_texture().get_image()
-	
 	var mat = StandardMaterial3D.new()
-	mat.albedo_texture = ImageTexture.create_from_image(img)
+	mat.albedo_texture = product.image_texture
 	image_container.material = mat
 	
 func pick(node: Node3D):

@@ -2,13 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_0qwoh"]
 
-[node name="JoyStick" type="Node2D"]
+[node name="JoyStick" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Virtual Joystick" parent="." instance=ExtResource("1_0qwoh")]
-offset_left = 3.0
-offset_top = 8.0
-offset_right = 456.0
-offset_bottom = 645.0
+layout_mode = 1
+anchors_preset = 9
+anchor_top = 0.0
+offset_top = 0.0
+offset_right = 576.0
+offset_bottom = 0.0
+grow_vertical = 2
 joystick_mode = 1
 visibility_mode = 2
 action_left = "left"

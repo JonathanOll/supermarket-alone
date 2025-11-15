@@ -19,7 +19,13 @@ var height: float
 var depth: float 
 var size: Vector3
 
-func load() -> void:
+var image_texture: ImageTexture
+
+func load(scene: SceneTree = null) -> void:
+	calculate_bounds()
+	create_image(scene)
+
+func calculate_bounds():
 	var model_instance = model.instantiate()
 	
 	var mesh_instance: MeshInstance3D
@@ -27,7 +33,7 @@ func load() -> void:
 		if child is MeshInstance3D:
 			mesh_instance = child
 			break
-	
+
 	if mesh_instance:
 		var aabb: AABB =  mesh_instance.get_aabb() * Transform3D(Basis.from_euler(rotation), Vector3.ZERO)
 		
@@ -35,6 +41,43 @@ func load() -> void:
 		height = aabb.size.y
 		depth = aabb.size.x + gap
 		size = Vector3(width, height, depth)
+
+func create_image(scene: SceneTree):
+	if !scene:
+		return
+	
+	var subviewport = SubViewport.new()
+	subviewport.size = Vector2(256, 256)
+	subviewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+	subviewport.own_world_3d = true
+	
+	var node = Node3D.new()
+	subviewport.add_child(node)
+	
+	var camera = Camera3D.new()
+	camera.position.x = 1.5
+	camera.rotation.y = PI/2
+	node.add_child(camera)
+	
+	var light = DirectionalLight3D.new()
+	light.position.x = 0.75
+	light.rotation.y = PI/2
+	node.add_child(light)
+	
+	var model = create()
+	subviewport.add_child(model)
+	scene.current_scene.add_child(subviewport)
+	
+	# on attend que le subviewport soit en place et ait généré une image
+	await scene.process_frame
+	await scene.process_frame
+	
+	var img = subviewport.get_viewport().get_texture().get_image()
+	image_texture = ImageTexture.create_from_image(img)
+	
+	subviewport.queue_free()
+	print(image_texture)
+
 
 func create():
 	var instance: Node3D = model.instantiate()

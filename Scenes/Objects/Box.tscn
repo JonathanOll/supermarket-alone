@@ -13,8 +13,8 @@ collision_layer = 6
 collision_mask = 3
 mass = 0.001
 script = ExtResource("1_rueyf")
-img_generator = NodePath("SubViewport/ImgGenerator")
-viewport = NodePath("SubViewport")
+img_generator = NodePath("")
+viewport = NodePath("")
 image_container = NodePath("Model/ImageContainer")
 model = NodePath("Model")
 metadata/_custom_type_script = "uid://b4koncaet8puk"
@@ -27,27 +27,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509, 0)
 size = Vector3(0.4, 0.001, 0.4)
 material = SubResource("StandardMaterial3D_ohx7e")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-own_world_3d = true
-render_target_update_mode = 4
-
-[node name="ImgGenerator" type="Node3D" parent="SubViewport"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.08685, 5.49315, 0)
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport/ImgGenerator"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.2304, 0, 0.0130644)
-current = true
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/ImgGenerator"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.761308, 0, 0.148704)
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00134277, 0.638748, 0.00674438)
 shape = SubResource("BoxShape3D_ohx7e")
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

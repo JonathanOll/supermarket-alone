@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func _process(delta):
 	if Input.is_action_just_pressed("dev"):
-		shop.visible = !shop.visible
+		shop.toggle()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

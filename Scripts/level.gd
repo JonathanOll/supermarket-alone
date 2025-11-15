@@ -6,15 +6,7 @@ var racks: Array[Rack] = []
 var checkout_counters: Array[CheckoutCounter] = []
 var npcs: Array[NPC] = []
 
-func init():
-	for i in range(len(Global.products)):
-		var product = Global.products[i]
-		product.load()
-		
-		var box = Box.create(product)
-		box.position = Vector3(0, 10 + 2*i, -10)
-		add_child(box)
-	
+func init():	
 	var rack = add_rack(Vector3(-8, 0, -22), false)
 	
 	var aisle = add_aisle(Vector3(-8, 0, -5), false)
@@ -23,6 +15,15 @@ func init():
 	add_checkout_counter(Vector3(10, 0, 15), false)
 	
 	bake_navigation_mesh()
+	
+	await get_tree().create_timer(1).timeout
+	for i in range(len(Global.products)):
+		var product = Global.products[i]
+		product.load()
+		
+		var box = Box.create(product)
+		box.position = Vector3(0, 10 + 2*i, -10)
+		add_child(box)
 
 func add_aisle(position: Vector3 = Vector3.ZERO, bake_navmesh: bool = true) -> Aisle:
 	var aisle = Aisle.create()

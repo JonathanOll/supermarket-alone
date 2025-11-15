@@ -22,9 +22,9 @@ func _input(event):
 
 		camera.rotation.y = yaw
 		camera.rotation.x = pitch
-	
 
-	handle_click(event)
+	if (event is InputEventScreenTouch || event is InputEventMouseButton) && event.pressed:
+		handle_click(event)
 
 func _process(_delta):
 	for button in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
@@ -56,10 +56,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func handle_click(event):
-	if (event is InputEventScreenTouch || event is InputEventMouseButton) && event.pressed:
-		var hit = _shoot_raycast(Global.CLICKABLE, event.position)
-		if hit:
-			hit.collider.clicked.emit(self, event.button_index if event is InputEventMouseButton else MOUSE_BUTTON_LEFT)
+	var hit = _shoot_raycast(Global.CLICKABLE, event.position)
+	if hit:
+		hit.collider.clicked.emit(self, event.button_index if event is InputEventMouseButton else MOUSE_BUTTON_LEFT)
 
 func get_in_hand(item) -> void:
 	item.pick(hands)
@@ -73,8 +72,9 @@ func clear_hand():
 
 func _shoot_raycast(mask: int, screen_position: Vector2 = Vector2(-1000,-1000)):
 	var space_state = get_world_3d().direct_space_state
+	
 	if screen_position.x == screen_position.y and screen_position.x == - 1000:
-		screen_position = get_viewport().size / 2
+		screen_position = get_viewport().get_visible_rect().size / 2
 	
 	var from = camera.project_ray_origin(screen_position)
 	var to = from + camera.project_ray_normal(screen_position) * REACH

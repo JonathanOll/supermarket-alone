@@ -3,17 +3,22 @@
 [ext_resource type="Script" uid="uid://da7eu08b6gi6r" path="res://Scripts/UI/money_count.gd" id="1_e73ny"]
 
 [node name="MoneyCount" type="Control" node_paths=PackedStringArray("label")]
-layout_direction = 3
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_e73ny")
 label = NodePath("Label")
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = -5.0
-offset_right = 255.0
-offset_bottom = 95.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -171.0
+offset_bottom = 55.0
+grow_horizontal = 0
 theme_override_font_sizes/font_size = 40
 text = "1000.00$"

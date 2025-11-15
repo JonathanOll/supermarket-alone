@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djxia0exild6r" path="res://Scenes/Entities/Player.tscn" id="3_7lihs"]
 [ext_resource type="PackedScene" uid="uid://bquooy66p2kgr" path="res://UI/MoneyCount.tscn" id="5_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://drcy2gkasnll5" path="res://UI/BoxContent.tscn" id="6_7lihs"]
-[ext_resource type="PackedScene" uid="uid://c0xb2wcee3fm2" path="res://UI/Shop/Shop.tscn" id="7_fgofq"]
+[ext_resource type="PackedScene" uid="uid://dk1np2idhb67f" path="res://UI/Shop/Shop.tscn" id="7_fgofq"]
 [ext_resource type="PackedScene" uid="uid://dqcqdjq48mup6" path="res://UI/JoyStick.tscn" id="8_2irst"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
@@ -80,14 +80,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 [node name="BoxContent" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_7lihs")]
 player = NodePath("../../Level/Player")
 
+[node name="JoyStick" parent="CanvasLayer" instance=ExtResource("8_2irst")]
+
 [node name="Shop" parent="CanvasLayer" instance=ExtResource("7_fgofq")]
 visible = false
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="JoyStick" parent="CanvasLayer" instance=ExtResource("8_2irst")]
 
 [node name="NPCSpawn" type="Timer" parent="."]
 wait_time = 10.0
