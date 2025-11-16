@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
-[ext_resource type="Texture2D" uid="uid://cjdifo2set12q" path="res://Assets/Materials/ground.jpg" id="2_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://djxia0exild6r" path="res://Scenes/Entities/Player.tscn" id="3_7lihs"]
 [ext_resource type="PackedScene" uid="uid://bquooy66p2kgr" path="res://UI/MoneyCount.tscn" id="5_b2bpf"]
 [ext_resource type="PackedScene" uid="uid://drcy2gkasnll5" path="res://UI/BoxContent.tscn" id="6_7lihs"]
@@ -14,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cw65yrj0q1k5t" path="res://Assets/Models/Terrain/Eiffel.glb" id="12_3so38"]
 [ext_resource type="PackedScene" uid="uid://imp25nwtl24w" path="res://Assets/Models/Terrain/Building2.glb" id="13_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://vaskgsoadtg3" path="res://Assets/Models/Terrain/Building3.glb" id="14_wxwew"]
+[ext_resource type="PackedScene" uid="uid://cqtnv6hfpembw" path="res://Assets/Models/Terrain/Archway.glb" id="15_acvyw"]
+[ext_resource type="PackedScene" uid="uid://c8f34hio7xd3r" path="res://Assets/Models/Terrain/Shop.glb" id="16_alh3a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
 sky_top_color = Color(0.384314, 0.756863, 0.898039, 1)
@@ -34,53 +35,56 @@ ambient_light_color = Color(1, 0.647059, 0.243137, 1)
 ambient_light_energy = 2.5
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_7rqgy"]
-vertices = PackedVector3Array(-58.5, 0.495, 0, -2.75, 0.495, 0, -2.25, 0.495, -1.5, 0, 0.495, -2.75, 0, 0.495, -58.5, -58.5, 0.495, -58.5, 1.5, 0.495, -2.25, 2.75, 0.495, 0, 58.5, 0.495, 0, 58.5, 0.495, -58.5, -2.25, 0.495, 1.5, 0, 0.495, 58.5, 0, 0.495, 2.75, -58.5, 0.495, 58.5, 1.5, 0.495, 2.25, 58.5, 0.495, 58.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 0), PackedInt32Array(6, 3, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 4), PackedInt32Array(0, 1, 10), PackedInt32Array(12, 11, 10), PackedInt32Array(10, 11, 13), PackedInt32Array(10, 13, 0), PackedInt32Array(11, 12, 14), PackedInt32Array(7, 8, 14), PackedInt32Array(14, 8, 15), PackedInt32Array(14, 15, 11)]
 agent_height = 7.0
 agent_radius = 1.27
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhkr4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_acvyw"]
+size = Vector3(179.737, 0.001, 181.835)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nhkr4"]
-size = Vector3(120, 0.01, 120)
+[sub_resource type="BoxShape3D" id="BoxShape3D_alh3a"]
+size = Vector3(681.774, 0.001, 281.435)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4jh7"]
-albedo_texture = ExtResource("2_b2bpf")
-uv1_scale = Vector3(20, 20, 20)
-
-[sub_resource type="BoxMesh" id="BoxMesh_nhkr4"]
-material = SubResource("StandardMaterial3D_y4jh7")
-size = Vector3(120, 0.01, 120)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4q8tf"]
+size = Vector3(677.951, 136.399, 97.4667)
 
 [node name="Game" type="Node3D" node_paths=PackedStringArray("navigation_region", "player", "level", "shop")]
 script = ExtResource("1_kldst")
-navigation_region = NodePath("Level")
+navigation_region = NodePath("Level/PathfindingRegion")
 player = NodePath("Level/Player")
-level = NodePath("Level")
+level = NodePath("Level/PathfindingRegion")
 shop = NodePath("CanvasLayer/Shop")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qxria")
 
-[node name="Level" type="NavigationRegion3D" parent="."]
+[node name="Level" type="Node3D" parent="."]
+
+[node name="PathfindingRegion" type="NavigationRegion3D" parent="Level"]
 navigation_mesh = SubResource("NavigationMesh_7rqgy")
 script = ExtResource("2_7lihs")
 
-[node name="Ground" type="StaticBody3D" parent="Level"]
-physics_material_override = SubResource("PhysicsMaterial_nhkr4")
+[node name="Collisions" type="Node3D" parent="Level/PathfindingRegion"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ground"]
-shape = SubResource("BoxShape3D_nhkr4")
+[node name="Shop" type="StaticBody3D" parent="Level/PathfindingRegion/Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.8861)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Ground/CollisionShape3D"]
-mesh = SubResource("BoxMesh_nhkr4")
-skeleton = NodePath("../..")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124512, 0, -0.775208)
+shape = SubResource("BoxShape3D_acvyw")
 
-[node name="Player" parent="Level" instance=ExtResource("3_7lihs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
+[node name="Road" type="StaticBody3D" parent="Level/PathfindingRegion/Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -114.005)
 
-[node name="BoxSpawnPoint" type="Node3D" parent="Level"]
-transform = Transform3D(0.999681, 0, -0.0252697, 0, 1, 0, 0.0252697, 0, 0.999681, 41.6396, 9.54946, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98096, -0.4995, -86.2134)
+shape = SubResource("BoxShape3D_alh3a")
+
+[node name="AcrossBuildings" type="StaticBody3D" parent="Level/PathfindingRegion/Collisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -114.005)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/AcrossBuildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8481, 68.8042, -100.457)
+shape = SubResource("BoxShape3D_4q8tf")
 
 [node name="Terrain" type="Node3D" parent="Level"]
 
@@ -89,6 +93,30 @@ transform = Transform3D(1000, 0, 0, 0, 100, 0, 0, 0, 150, 0, -1.00322, -113.708)
 
 [node name="group524283309" parent="Level/Terrain/Road" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 2)
+
+[node name="Building1" parent="Level/Terrain" instance=ExtResource("11_dahhg")]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 141.594, 1.13345, -209.982)
+
+[node name="Eiffel" parent="Level/Terrain" instance=ExtResource("12_3so38")]
+transform = Transform3D(0.05, 0, 0, 0, 0.0499455, 0.00233353, 0, -0.00233353, 0.0499455, -300, 0, -1257.98)
+
+[node name="Building2" parent="Level/Terrain" instance=ExtResource("13_3cx6b")]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 9.87241, 1.06005, -216.155)
+
+[node name="Building3" parent="Level/Terrain" instance=ExtResource("14_wxwew")]
+transform = Transform3D(-100, 0, -1.50996e-05, 0, 100, 0, 1.50996e-05, 0, -100, -154.974, -1.52588e-05, -221.166)
+
+[node name="Archway" parent="Level/Terrain" instance=ExtResource("15_acvyw")]
+transform = Transform3D(19.6658, 0, 45.9702, 0, 50, 0, -45.9702, 0, 19.6658, -3232.03, 361.859, -971.639)
+
+[node name="Shop" parent="Level/Terrain" instance=ExtResource("16_alh3a")]
+transform = Transform3D(150, 0, 0, 0, 50, 0, 0, 0, 150, 0, 0, 26.8861)
+
+[node name="Player" parent="Level" instance=ExtResource("3_7lihs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
+
+[node name="BoxSpawnPoint" type="Node3D" parent="Level"]
+transform = Transform3D(0.999681, 0, -0.0252697, 0, 1, 0, 0.0252697, 0, 0.999681, 41.6396, 9.54946, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -109,18 +137,6 @@ autostart = true
 
 [node name="Fridge" parent="." instance=ExtResource("9_bf53h")]
 transform = Transform3D(-0.937653, 0, -0.347574, 0, 1, 0, 0.347574, 0, -0.937653, 33.5826, 0.620359, 25.7097)
-
-[node name="Building1" parent="." instance=ExtResource("11_dahhg")]
-transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 141.594, 1.13345, -209.982)
-
-[node name="Eiffel" parent="." instance=ExtResource("12_3so38")]
-transform = Transform3D(0.05, 0, 0, 0, 0.0499455, 0.00233353, 0, -0.00233353, 0.0499455, -300, 0, -1257.98)
-
-[node name="Building2" parent="." instance=ExtResource("13_3cx6b")]
-transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 9.87241, 1.06005, -216.155)
-
-[node name="Building3" parent="." instance=ExtResource("14_wxwew")]
-transform = Transform3D(-100, 0, -1.50996e-05, 0, 100, 0, 1.50996e-05, 0, -100, -154.974, -1.52588e-05, -221.166)
 
 [connection signal="timeout" from="NPCSpawn" to="." method="_on_npc_spawn_timeout"]
 
