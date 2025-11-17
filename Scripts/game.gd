@@ -8,12 +8,13 @@ static var instance: Game
 @export var shop: Shop
 @export var npc_spawn_area: CSGBox3D
 
-var money: float = 1_000
+var money: Observable = Observable.new(1000)
 
-func _ready() -> void:
+func _init() -> void:
 	assert(instance == null) # pr le singleton
 	instance = self
-	
+
+func _ready() -> void:
 	level.init()
 	
 	if Global.dev:

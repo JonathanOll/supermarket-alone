@@ -10,13 +10,14 @@ func _init(npc: NPC, ps: ProductStorage, c: int):
 	count = c
 
 func finished():
-	return count == 0
+	return count <= 0
 
 func loop():
 	if count > 0:
 		if product_storage.count == 0:
 			npc.complain("No more " + product_storage.product.name + " in stock !")
 			count = 0
+			return
 		product_storage.remove_one()
 		npc.products.append(product_storage.product)
 		count -= 1

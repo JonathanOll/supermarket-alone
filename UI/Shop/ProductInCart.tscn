@@ -17,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
 script = ExtResource("1_lhm5l")
 image = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/AspectRatioContainer/Image")
 name_label = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/Name")
@@ -24,6 +25,7 @@ quantity_label = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/V
 price_label = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Price")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 offset_right = 265.0
 offset_bottom = 110.0
 size_flags_horizontal = 3

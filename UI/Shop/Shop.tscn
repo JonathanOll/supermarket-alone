@@ -17,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_7ehp3")
 product_container = NodePath("MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Products/ColorRect/ScrollContainer/MarginContainer/ProductContainer")
 cart_container = NodePath("MarginContainer/ColorRect/VBoxContainer/HBoxContainer2/Cart/ColorRect/VBoxContainer/ScrollContainer/VBoxContainer")
@@ -35,6 +36,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect"]
 layout_mode = 1

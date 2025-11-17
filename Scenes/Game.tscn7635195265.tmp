@@ -121,7 +121,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8481, 68.8042, -100.457)
 shape = SubResource("BoxShape3D_4q8tf")
 
 [node name="Trash" parent="Level/PathfindingRegion" instance=ExtResource("12_alh3a")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.7288, 0.204545, -62.7625)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.7288, 0.204545, -62.3786)
 
 [node name="Terrain" type="Node3D" parent="Level"]
 
@@ -167,24 +167,20 @@ size = Vector3(336.907, 0.01, 67.289)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Shop" parent="CanvasLayer" node_paths=PackedStringArray("box_spawn_point", "joystick") instance=ExtResource("7_fgofq")]
+[node name="Shop" parent="CanvasLayer" node_paths=PackedStringArray("box_spawn_point") instance=ExtResource("7_fgofq")]
 visible = false
 z_index = 10
-mouse_filter = 1
 box_spawn_point = NodePath("../../Level/BoxSpawnPoint")
-joystick = NodePath("../JoyStick")
 
 [node name="MoneyCount" parent="CanvasLayer" instance=ExtResource("5_b2bpf")]
-mouse_filter = 2
 
 [node name="BoxContent" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_7lihs")]
-mouse_filter = 2
 player = NodePath("../../Level/Player")
 
 [node name="JoyStick" parent="CanvasLayer" instance=ExtResource("8_2irst")]
-mouse_filter = 2
 
 [node name="Crosshair" parent="CanvasLayer" instance=ExtResource("17_4q8tf")]
+visible = false
 
 [node name="NPCSpawn" type="Timer" parent="."]
 wait_time = 10.0

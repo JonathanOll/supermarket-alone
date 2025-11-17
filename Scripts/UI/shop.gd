@@ -4,6 +4,7 @@ class_name Shop
 @export var product_container: FlowContainer
 @export var cart_container: VBoxContainer
 @export var box_spawn_point: Node3D
+@export var joystick: Control
 
 func _ready() -> void:
 	
@@ -17,10 +18,12 @@ func _ready() -> void:
 func open():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	show()
+	joystick.hide()
 
 func close():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	hide()
+	joystick.show()
 
 func toggle():
 	if visible:
@@ -43,11 +46,17 @@ func total_price():
 		total += cp.product.unit_per_box * cp.product.unit_price * cp.count
 	return total
 
+func empty_cart():
+	for c in cart_container.get_children():
+		cart_container.remove_child(c)
+		c.queue_free()
+
 func _on_button_pressed() -> void:
-	if Game.instance.money >= total_price():
+	if Game.instance.money.get_value() >= total_price():
 		close()
-		Game.instance.money -= total_price()
+		Game.instance.money.set_value(Game.instance.money.get_value() - total_price())
 		for cart_product in cart_container.get_children():
 			for i in range(cart_product.count):
 				Game.instance.level.add_box(cart_product.product, box_spawn_point.position)
 				await get_tree().create_timer(0.5).timeout
+		empty_cart()

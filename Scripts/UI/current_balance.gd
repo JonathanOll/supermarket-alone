@@ -1,8 +1,8 @@
 extends Label
 
-var value: int
 
-func _process(_delta):
-	if Game.instance.money != value:
-		value = Game.instance.money
-		text = "Current balance: " + str(value) + "$"
+func update(old, new):
+	text = "%.2f$" % new
+	
+func _ready() -> void:
+	Game.instance.money.observe(update)

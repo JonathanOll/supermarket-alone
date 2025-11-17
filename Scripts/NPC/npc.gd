@@ -79,8 +79,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func next_task():
+	if tasks.is_empty():
+		queue_free()
 	if current_task:
 		current_task.finish()
+		animate(animations.idle)
+	if !cooldown.is_stopped():
+		await cooldown.timeout
 	current_task = tasks.pop_front()
 	current_task.start()
 
@@ -123,12 +128,10 @@ func handle_tasks():
 		
 	if current_task:
 		current_task.loop()
-		if current_task.finished() && !tasks.is_empty():
+		if current_task.finished():
 			next_task()
-	elif !tasks.is_empty():
-		next_task()
 	else:
-		queue_free()
+		next_task()
 
 func complain(text: String, duration: float = 5.0):
 	complaint_label.text = text
