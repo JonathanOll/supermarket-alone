@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=25 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://imp25nwtl24w" path="res://Assets/Models/Terrain/Building2.glb" id="13_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://vaskgsoadtg3" path="res://Assets/Models/Terrain/Building3.glb" id="14_wxwew"]
 [ext_resource type="PackedScene" uid="uid://cqtnv6hfpembw" path="res://Assets/Models/Terrain/Archway.glb" id="15_acvyw"]
+[ext_resource type="Texture2D" uid="uid://cjdifo2set12q" path="res://Assets/Materials/ground.jpg" id="16_4q8tf"]
 [ext_resource type="PackedScene" uid="uid://c8f34hio7xd3r" path="res://Assets/Models/Terrain/Shop.glb" id="16_alh3a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
@@ -47,9 +48,12 @@ size = Vector3(681.774, 0.001, 281.435)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4q8tf"]
 size = Vector3(677.951, 136.399, 97.4667)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("navigation_region", "player", "level", "shop")]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3xnh"]
+albedo_texture = ExtResource("16_4q8tf")
+uv1_scale = Vector3(10, 10, 10)
+
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "level", "shop")]
 script = ExtResource("1_kldst")
-navigation_region = NodePath("Level/PathfindingRegion")
 player = NodePath("Level/Player")
 level = NodePath("Level/PathfindingRegion")
 shop = NodePath("CanvasLayer/Shop")
@@ -111,6 +115,11 @@ transform = Transform3D(19.6658, 0, 45.9702, 0, 50, 0, -45.9702, 0, 19.6658, -32
 
 [node name="Shop" parent="Level/Terrain" instance=ExtResource("16_alh3a")]
 transform = Transform3D(150, 0, 0, 0, 50, 0, 0, 0, 150, 0, 0, 26.8861)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0741425, 0.0383447, 28.5419)
+material_override = SubResource("StandardMaterial3D_x3xnh")
+size = Vector3(179.762, 0.001, 176.595)
 
 [node name="Player" parent="Level" instance=ExtResource("3_7lihs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)

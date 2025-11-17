@@ -3,7 +3,6 @@ class_name Game
 
 static var instance: Game
 
-@export var navigation_region: NavigationRegion3D
 @export var player: Player
 @export var level: Level
 @export var shop: Shop

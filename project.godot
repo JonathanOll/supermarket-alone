@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="projet-ollivier"
-run/main_scene="uid://bisacees2rd6b"
+run/main_scene="uid://c0oqbv4j5jqd1"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
